@@ -1,7 +1,8 @@
 const boxes = document.querySelectorAll("#board div");
 const showTurn = document.querySelector("#show-turn strong");
+const displayWinner = document.querySelector("#display-winner");
 
-const playerInputs = [];
+const playerInputs = new Array(9);
 const player1 = "X";
 const player2 = "O";
 
@@ -13,17 +14,16 @@ showTurn.textContent = currentTurn;
 for (let i = 0; i < boxes.length; i++) {
   let box = boxes[i];
   box.addEventListener("click", () => {
-    if (turn === 9) {
-      const ans = checkWinner(playerInputs);
-      console.log(ans);
-    }else{
     turn += 1;
     box.textContent = currentTurn;
     playerInputs[i] = currentTurn;
     currentTurn = currentTurn === player1 ? player2 : player1;
     showTurn.textContent = currentTurn;
-    }
 
+    const ans = checkWinner(playerInputs);
+    if(ans){
+      displayWinner.textContent = `winner is ${ans}`;
+    }
   });
 }
 
@@ -39,23 +39,19 @@ function checkWinner(arr) {
     [0, 4, 8],
   ];
 
-  let result = "Draw";
-
   for (let i = 0; i < winPatterns.length; i++) {
     let [a, b, c] = winPatterns[i];
-    let condition =
-      arr[a] === arr[b] && arr[b] === arr[c] && arr[c] === arr[a];
 
-    if (condition) {
-      result = arr[a];
+    let condition = arr[a] === arr[b] && arr[b] === arr[c] && arr[c] === arr[a];
+
+    if (condition && arr[a] !== undefined) {
+       return arr[a];
     }
   }
 
-  return result === "Draw" ? "The match is a draw" : `Winner is ${result}`;
+  return false;
 }
 
 // 1. Show the inputs and whose turn in the screen.
-// 2. Check for winner in every click and do auto check if all 9 clicks are over.
-// 3. Do not allow click after 9 click.
+// 3. Do not allow click after 9 click or if someone has won.
 // 4. Show to winner on screen.
-    
