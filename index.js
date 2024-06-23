@@ -53,5 +53,4 @@ function checkWinner(arr) {
 // 2. Check for winner in every click and do auto check if all 9 clicks are over.
 // 3. Do not allow click after 9 click.
 // 4. Show to winner on screen.
-// 5. Make the codebase modular.
     

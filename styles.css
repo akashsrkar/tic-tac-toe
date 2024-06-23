@@ -1,0 +1,12 @@
+#board {
+        width: 500px;
+        height: 500px;
+        margin-inline: auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      #board > div {
+        border: 1px solid black;
+        text-align: center;
+      }
