@@ -1,10 +1,14 @@
 const boxes = document.querySelectorAll("#board div");
+const showTurn = document.querySelector("#show-turn strong");
+
 const playerInputs = [];
 const player1 = "X";
 const player2 = "O";
 
 let turn = 0;
-let nextTurn = player1;
+let currentTurn = player1;
+
+showTurn.textContent = currentTurn;
 
 for (let i = 0; i < boxes.length; i++) {
   let box = boxes[i];
@@ -14,9 +18,10 @@ for (let i = 0; i < boxes.length; i++) {
       console.log(ans);
     }else{
     turn += 1;
-    box.textContent = nextTurn;
-    playerInputs[i] = nextTurn;
-    nextTurn = nextTurn === player1 ? player2 : player1;
+    box.textContent = currentTurn;
+    playerInputs[i] = currentTurn;
+    currentTurn = currentTurn === player1 ? player2 : player1;
+    showTurn.textContent = currentTurn;
     }
 
   });
