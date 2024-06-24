@@ -28,7 +28,16 @@ for (let i = 0; i < boxes.length; i++) {
       if (ans) {
         displayWinner.textContent = `winner is ${ans}`;
         isWinnerDeclared = true;
+      }else if(turn === 9){
+        displayWinner.textContent = "The match is drawn"
       }
     }
   });
 }
+
+
+// 1. Bring in the logic of win and draw together in a function and also change the display and remove the current turn and replace it with "Game over".
+
+// 2. Give a button to restart the game instead of refreshing the page.
+
+// 3. Smartly add style using css
