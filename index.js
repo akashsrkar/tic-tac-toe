@@ -10,25 +10,25 @@ const player2 = "O";
 
 let turn = 0;
 let currentTurn = player1;
+let isWinnerDeclared = false;
 
 showTurn.textContent = currentTurn;
 
 for (let i = 0; i < boxes.length; i++) {
   let box = boxes[i];
   box.addEventListener("click", () => {
-    turn += 1;
-    box.textContent = currentTurn;
-    playerInputs[i] = currentTurn;
-    currentTurn = currentTurn === player1 ? player2 : player1;
-    showTurn.textContent = currentTurn;
+    if (!isWinnerDeclared && turn < 9) {
+      turn += 1;
+      box.textContent = currentTurn;
+      playerInputs[i] = currentTurn;
+      currentTurn = currentTurn === player1 ? player2 : player1;
+      showTurn.textContent = currentTurn;
 
-    const ans = checkWinner(playerInputs);
-    if(ans){
-      displayWinner.textContent = `winner is ${ans}`;
+      const ans = checkWinner(playerInputs);
+      if (ans) {
+        displayWinner.textContent = `winner is ${ans}`;
+        isWinnerDeclared = true;
+      }
     }
   });
 }
-
-// 1. Show the inputs and whose turn in the screen.
-// 3. Do not allow click after 9 click or if someone has won.
-// 4. Show to winner on screen.
