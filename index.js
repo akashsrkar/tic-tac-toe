@@ -1,7 +1,7 @@
 import checkWinner from "./utils/checkWinner.js";
 
 const boxes = document.querySelectorAll("#board div");
-const showTurn = document.querySelector("#show-turn strong");
+const showTurn = document.querySelector("#show-turn");
 const displayWinner = document.querySelector("#display-winner");
 
 const playerInputs = new Array(9);
@@ -12,7 +12,7 @@ let turn = 0;
 let currentTurn = player1;
 let gameStatus = checkGameStatus();
 
-showTurn.textContent = currentTurn;
+showTurn.textContent = `Current Turn: ${currentTurn}`;
 
 for (let i = 0; i < boxes.length; i++) {
   let box = boxes[i];
@@ -34,7 +34,7 @@ function continueGame(box, index) {
   box.textContent = currentTurn;
   playerInputs[index] = currentTurn;
   currentTurn = currentTurn === player1 ? player2 : player1;
-  showTurn.textContent = currentTurn;
+  showTurn.textContent = `Current Turn: ${currentTurn}`;
   gameStatus = checkGameStatus();
   if (!gameStatus) {
     endGame();
@@ -51,8 +51,7 @@ function endGame() {
   displayWinner.textContent = `winner is ${winner}`;
 }
 
-// 1. Bring in the logic of win and draw together in a function and also change the display and remove the current turn and replace it with "Game over".
-
+//1. Fix Game over
 // 2. Give a button to restart the game instead of refreshing the page.
 
 // 3. Smartly add style using css
