@@ -1,15 +1,15 @@
-import checkWinner from "./utils/checkWinner.js";
+import getWinner from "./utils/getWinner.js";
 
 const boxes = document.querySelectorAll("#board div");
 const showTurn = document.querySelector("#show-turn");
 const displayWinner = document.querySelector("#display-winner");
 
-const playerInputs = new Array(9);
-const player1 = "X";
-const player2 = "O";
+const PLAYER_INPUTS = new Array(9);
+const FIRST_PLAYER = "X";
+const SECOND_PLAYER = "O";
 
 let turn = 0;
-let currentTurn = player1;
+let currentTurn = FIRST_PLAYER;
 let gameStatus = checkGameStatus();
 
 showTurn.textContent = `Current Turn: ${currentTurn}`;
@@ -24,7 +24,7 @@ for (let i = 0; i < boxes.length; i++) {
 }
 
 function checkGameStatus() {
-  const winner = checkWinner(playerInputs);
+  const winner = getWinner(PLAYER_INPUTS);
   const maxTurn = 9;
   return !winner && turn < maxTurn;
 }
@@ -32,8 +32,8 @@ function checkGameStatus() {
 function continueGame(box, index) {
   turn += 1;
   box.textContent = currentTurn;
-  playerInputs[index] = currentTurn;
-  currentTurn = currentTurn === player1 ? player2 : player1;
+  PLAYER_INPUTS[index] = currentTurn;
+  currentTurn = currentTurn === FIRST_PLAYER ? SECOND_PLAYER : FIRST_PLAYER;
   showTurn.textContent = `Current Turn: ${currentTurn}`;
   gameStatus = checkGameStatus();
   if (!gameStatus) {
@@ -42,7 +42,7 @@ function continueGame(box, index) {
 }
 
 function endGame() {
-  const winner = checkWinner(playerInputs);
+  const winner = getWinner(PLAYER_INPUTS);
   showTurn.textContent = "Game Over";
   if (!winner) {
     displayWinner.textContent = "The match is a draw";
@@ -51,7 +51,6 @@ function endGame() {
   displayWinner.textContent = `winner is ${winner}`;
 }
 
-//1. Fix Game over
-// 2. Give a button to restart the game instead of refreshing the page.
+// 1. Give a button to restart the game instead of refreshing the page.
 
-// 3. Smartly add style using css
+// 2. Smartly add style using css
