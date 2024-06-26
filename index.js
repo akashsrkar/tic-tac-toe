@@ -70,6 +70,5 @@ playAgain.addEventListener("click", () => {
   displayWinner.textContent = "";
 })
 
-// 1. Give a button to restart the game instead of refreshing the page.
 
 // 2. Smartly add style using css

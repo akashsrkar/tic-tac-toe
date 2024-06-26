@@ -1,6 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans:wght@100..900&display=swap');
+
 *{
   padding: 0;
   margin: 0;
+}
+
+body{
+  font-family: "Noto Sans", sans-serif;
+}
+
+h1{
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 7.5rem;
+  text-align: center;
+  margin-top: 1rem;
 }
 
 
@@ -14,13 +27,21 @@
       }
 
       #board > div {
-        border: 1px solid black;
         font-weight: 700;
         font-size: 2rem;
         display: flex;
         align-items: center;
         justify-content: center;
         
+      }
+
+      #board > div:nth-child(-n+6){
+        border-bottom: 1.5px solid black;
+      }
+
+      #box1, #box4, #box7,
+      #box2, #box5, #box8{
+        border-right: 1.5px solid black;
       }
 
 
