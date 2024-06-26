@@ -15,7 +15,7 @@ function getWinner(arr) {
   
       let condition = arr[a] === arr[b] && arr[b] === arr[c] && arr[c] === arr[a];
   
-      if (condition && arr[a] !== undefined) {
+      if (condition && arr[a]) {
          return arr[a];
       }
     }

@@ -15,7 +15,7 @@ let currentTurn = FIRST_PLAYER;
 let gameStatus = checkGameStatus();
 
 showTurn.textContent = `Current Turn: ${currentTurn}`;
-playAgain.classList.add("hide");
+hideElement(playAgain);
 
 for (let i = 0; i < boxes.length; i++) {
   let box = boxes[i];
@@ -47,8 +47,8 @@ function continueGame(box, index) {
 function endGame() {
   const winner = getWinner(PLAYER_INPUTS);
   showTurn.textContent = "Game Over";
-  playAgain.removeAttribute("class");
-  playAgain.classList.add("show");
+  showElement(playAgain);
+  
   if (!winner) {
     displayWinner.textContent = "The match is a draw";
     return;
@@ -63,8 +63,7 @@ playAgain.addEventListener("click", () => {
   currentTurn = FIRST_PLAYER;
   gameStatus = checkGameStatus();
   showTurn.textContent = `Current Turn: ${currentTurn}`;
-  playAgain.removeAttribute("class");
-  playAgain.classList.add("hide");
+  hideElement(playAgain);
   boxes.forEach(box => {
     box.textContent = "";
   });
