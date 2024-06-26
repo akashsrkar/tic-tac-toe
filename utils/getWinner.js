@@ -1,4 +1,4 @@
-function checkWinner(arr) {
+function getWinner(arr) {
     const winPatterns = [
       [0, 1, 2],
       [3, 4, 5],
@@ -23,4 +23,4 @@ function checkWinner(arr) {
     return false;
   }
 
-  export default checkWinner;
+  export default getWinner;

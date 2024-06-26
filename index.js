@@ -3,6 +3,7 @@ import getWinner from "./utils/getWinner.js";
 const boxes = document.querySelectorAll("#board div");
 const showTurn = document.querySelector("#show-turn");
 const displayWinner = document.querySelector("#display-winner");
+const playAgain = document.querySelector("#play-again");
 
 const PLAYER_INPUTS = new Array(9);
 const FIRST_PLAYER = "X";
@@ -44,6 +45,7 @@ function continueGame(box, index) {
 function endGame() {
   const winner = getWinner(PLAYER_INPUTS);
   showTurn.textContent = "Game Over";
+  playAgain.classList.add("show");
   if (!winner) {
     displayWinner.textContent = "The match is a draw";
     return;
