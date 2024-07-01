@@ -46,17 +46,17 @@ function continueGame(box, index) {
 
 function endGame() {
   const winner = getWinner(PLAYER_INPUTS);
-  showTurn.textContent = "Game Over";
-  showTurn.setAttribute("class", "game-over")
   showElement(playAgain);
-  
+  hideElement(showTurn);
+
   if (!winner) {
-    displayWinner.textContent = "The match is a draw";
+    displayWinner.textContent = "The match is a Draw";
+    displayWinner.setAttribute("class", "draw");
     return;
   }
-  displayWinner.textContent = `winner is ${winner}`;
+  displayWinner.textContent = `Winner is ${winner}`;
+  displayWinner.setAttribute("class", "winner");
 }
-
 
 playAgain.addEventListener("click", () => {
   PLAYER_INPUTS.fill(null);
@@ -64,11 +64,10 @@ playAgain.addEventListener("click", () => {
   currentTurn = FIRST_PLAYER;
   gameStatus = checkGameStatus();
   showTurn.innerHTML = `Current Turn - <span>${currentTurn}</span>`;
-  showTurn.removeAttribute("class");
   hideElement(playAgain);
-  boxes.forEach(box => {
+  showElement(showTurn);
+  boxes.forEach((box) => {
     box.textContent = "";
   });
   displayWinner.textContent = "";
-})
-
+});

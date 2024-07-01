@@ -41,9 +41,14 @@ h1{
   border-radius: 4px;
 }
 
-.game-over{
+.draw{
   color: red;
-  font-weight: bold;
+  font-weight: 600;
+}
+
+.winner{
+  color: green;
+  font-weight: 600;
 }
 
 #board {
