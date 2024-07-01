@@ -14,7 +14,7 @@ let turn = 0;
 let currentTurn = FIRST_PLAYER;
 let gameStatus = checkGameStatus();
 
-showTurn.textContent = `Current Turn: ${currentTurn}`;
+showTurn.innerHTML = `Current Turn - <span>${currentTurn}</span>`;
 hideElement(playAgain);
 
 for (let i = 0; i < boxes.length; i++) {
@@ -37,7 +37,7 @@ function continueGame(box, index) {
   box.textContent = currentTurn;
   PLAYER_INPUTS[index] = currentTurn;
   currentTurn = currentTurn === FIRST_PLAYER ? SECOND_PLAYER : FIRST_PLAYER;
-  showTurn.textContent = `Current Turn: ${currentTurn}`;
+  showTurn.innerHTML = `Current Turn - <span>${currentTurn}</span>`;
   gameStatus = checkGameStatus();
   if (!gameStatus) {
     endGame();
@@ -47,6 +47,7 @@ function continueGame(box, index) {
 function endGame() {
   const winner = getWinner(PLAYER_INPUTS);
   showTurn.textContent = "Game Over";
+  showTurn.setAttribute("class", "game-over")
   showElement(playAgain);
   
   if (!winner) {
@@ -62,7 +63,8 @@ playAgain.addEventListener("click", () => {
   turn = 0;
   currentTurn = FIRST_PLAYER;
   gameStatus = checkGameStatus();
-  showTurn.textContent = `Current Turn: ${currentTurn}`;
+  showTurn.innerHTML = `Current Turn - <span>${currentTurn}</span>`;
+  showTurn.removeAttribute("class");
   hideElement(playAgain);
   boxes.forEach(box => {
     box.textContent = "";
@@ -70,5 +72,3 @@ playAgain.addEventListener("click", () => {
   displayWinner.textContent = "";
 })
 
-
-// 2. Smartly add style using css
